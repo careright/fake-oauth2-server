@@ -96,7 +96,7 @@ function validateAuthorizationHeader(header, res) {
 
 function validateAccessTokenRequest(req, res) {
   let success = true, msg;
-  if (req.body.grant_type !== "authorization_code" && req.body.grant_type !== "refresh_token") {
+  if (req.body.grant_type !== "authorization_code" && req.body.grant_type !== "refresh_token" && req.body.grant_type !== "client_credentials") {
     success = false;
     msg = errorMsg("grant_type", "authorization_code or refresh_token", req.body.grant_type);
   }
