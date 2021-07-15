@@ -229,6 +229,8 @@ app.post(ACCESS_TOKEN_REQUEST_PATH, (req, res) => {
       const personData = refresh2personData[refresh];
       code = createToken(personData.name, personData.email, personData.expires_in, personData.refresh_token_expires_in, null);
       delete refresh2personData[refresh];
+    } else if (req.body.grant_type === "client_credentials") {
+      code = createToken('Bob', 'bob@example.com', 86400, 86400, null);
     } else {
       code = req.body.code;
     }
