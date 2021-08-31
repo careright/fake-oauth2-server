@@ -277,6 +277,12 @@ app.get(TOKENINFO_REQUEST_URL, (req, res) => {
 });
 
 
+app.post("/api/v1/appointments", (req, res) => {
+  res.send("Beep boop, doing things with appointment data");
+  res.status(200);
+  res.end();
+});
+
 module.exports = {
   app: app,
   validateClientId: validateClientId,
