@@ -16,8 +16,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 const EXPECTED_CLIENT_ID = process.env.EXPECTED_CLIENT_ID || "dummy-client-id";
 const EXPECTED_CLIENT_SECRET = process.env.EXPECTED_CLIENT_SECRET || "dummy-client-secret";
-const AUTH_REQUEST_PATH = process.env.AUTH_REQUEST_PATH || "/o/oauth2/v2/auth";
-const ACCESS_TOKEN_REQUEST_PATH = process.env.ACCESS_TOKEN_REQUEST_PATH || "/oauth2/v4/token";
+const AUTH_REQUEST_PATH = process.env.AUTH_REQUEST_PATH || "/o/oauth2/v4/auth";
+const ACCESS_TOKEN_REQUEST_PATH = process.env.ACCESS_TOKEN_REQUEST_PATH || "/oauth/token" ;
 const USERINFO_REQUEST_URL = process.env.TOKENINFO_REQUEST_URL || "/oauth2/v3/userinfo";
 const TOKENINFO_REQUEST_URL = process.env.TOKENINFO_REQUEST_URL || "/oauth2/v3/tokeninfo";
 const PERMITTED_REDIRECT_URLS = process.env.PERMITTED_REDIRECT_URLS ? process.env.PERMITTED_REDIRECT_URLS.split(",") : ["http://localhost:8181/auth/login"];
@@ -277,8 +277,18 @@ app.get(TOKENINFO_REQUEST_URL, (req, res) => {
 });
 
 
-app.post("/api/v1/appointments", (req, res) => {
-  res.send("Beep boop, doing things with appointment data");
+app.post("/appointment_list", (req, res) => {
+  let rawdata = fs.readFileSync('appointment.json');
+  let stub = JSON.parse(rawdata);
+  res.send(stub);
+  res.status(200);
+  res.end();
+});
+
+app.post("/reservation_list", (req, res) => {
+  let rawdata = fs.readFileSync('reservation.json');
+  let stub = JSON.parse(rawdata);
+  res.send(stub);
   res.status(200);
   res.end();
 });
