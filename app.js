@@ -283,6 +283,22 @@ app.post("/api/v1/appointments", (req, res) => {
   res.end();
 });
 
+app.post("/api/v1/appointments/list", (req, res) => {
+  let rawdata = fs.readFileSync('appointments.json');
+  let stub = JSON.parse(rawdata);
+  res.send(stub);
+  res.status(200);
+  res.end();
+});
+
+app.post("/api/v1/reservations/list", (req, res) => {
+  let rawdata = fs.readFileSync('reservations.json');
+  let stub = JSON.parse(rawdata);
+  res.send(stub);
+  res.status(200);
+  res.end();
+});
+
 module.exports = {
   app: app,
   validateClientId: validateClientId,
