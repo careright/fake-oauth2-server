@@ -7,17 +7,40 @@
             "id":1,
             "duration":20,
             "date":"2020-04-17",
-            "status":"Booked",
+            "status":"Busy",
             "category":"Consult",
             "start_time":"10:00:00+10:30"
          },
          "relationships":{
-            "patient":{
+            "provider":{
                "data":{
-                  "type":"patients",
-                  "id":"50"
+                  "type":"providers",
+                  "id":"12"
                }
             },
+            "location":{
+               "data":{
+                  "type":"locations",
+                  "id":"4"
+               }
+            }
+         },
+         "meta":{
+            "featured":true
+         }
+      },
+      {
+         "id":"2",
+         "type":"reservations",
+         "attributes":{
+            "id":1,
+            "duration":20,
+            "date":"2020-04-17",
+            "status":"Free",
+            "category":"Consult",
+            "start_time":"11:00:00+10:30"
+         },
+         "relationships":{
             "provider":{
                "data":{
                   "type":"providers",
@@ -37,46 +60,6 @@
       }
    ],
    "included":[
-      {
-         "id":"50",
-         "type":"patients",
-         "attributes":{
-            "id":50,
-            "first_name":"The",
-            "middle_name":"Test",
-            "last_name":"Patient",
-            "sex":"Male",
-            "date_of_birth":"2021-09-29",
-            "title":"Mr",
-            "marital_status":null,
-            "marital_status_code":null,
-            "country_of_birth":null,
-            "country_of_birth_code":null,
-            "indigenous_status":null,
-            "preferred_language":null,
-            "preferred_language_code":null
-         },
-         "relationships":{
-            "home_address":{
-               "data":null
-            },
-            "active_alerts":{
-               "data":[
-
-               ]
-            },
-            "active_notices":{
-               "data":[
-
-               ]
-            },
-            "patient_restricts":{
-               "meta":{
-                  "included":false
-               }
-            }
-         }
-      },
       {
          "id":"12",
          "type":"providers",
